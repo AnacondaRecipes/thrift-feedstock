@@ -1,7 +1,5 @@
-{% set version = "0.16.0" %}
-{% set hash_type = "sha256" %}
-{% set hash = "df2931de646a366c2e5962af679018bca2395d586e00ba82d09c0379f14f8e7b" %}
 {% set name = "thrift" %}
+{% set version = "0.16.0" %}
 
 package:
   name: {{ name }}
@@ -9,7 +7,7 @@ package:
 
 source:
   url: https://github.com/apache/thrift/archive/refs/tags/v{{ version }}.tar.gz
-  {{ hash_type }}: {{ hash }}
+  sha256: df2931de646a366c2e5962af679018bca2395d586e00ba82d09c0379f14f8e7b
 
 build:
   number: 1
