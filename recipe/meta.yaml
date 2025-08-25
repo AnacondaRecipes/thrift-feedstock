@@ -52,8 +52,7 @@ about:
     Thrift provides clean abstractions and implementations for data transport, data serialization, and application level processing.
   summary: Python bindings for the Apache Thrift RPC system
   dev_url: https://github.com/apache/thrift
-  doc_url: https://thrift.apache.org/docs/
-  doc_source_url: https://github.com/apache/thrift/tree/v{{ version }}/doc
+  doc_url: https://thrift.apache.org/docs
 
 extra:
   recipe-maintainers:
