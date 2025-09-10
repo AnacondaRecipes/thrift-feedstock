@@ -1,58 +1,53 @@
-{% set version = "0.17.0" %}
-{% set hash_type = "sha256" %}
-{% set hash = "f5888bcd3b8de40c2c2ab86896867ad9b18510deb412cba3e5da76fb4c604c29" %}
 {% set name = "thrift" %}
+{% set version = "0.22.0" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://github.com/apache/thrift/archive/refs/tags/v{{ version }}.tar.gz
-  {{ hash_type }}: {{ hash }}
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/thrift-{{ version }}.tar.gz
+  sha256: 42e8276afbd5f54fe1d364858b6877bc5e5a4a5ed69f6a005b94ca4918fe1466
 
 build:
-  number: 1
-  script: {{ PYTHON }} -m pip install ./lib/py -vv
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
-  build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
   host:
     - pip
     - python
-    - setuptools
-    - six >=1.7.2
     - wheel
+    - setuptools
   run:
     - python
-    - six >=1.7.2
+  run_constrained:
+    - tornado >=4.0
 
+# Tests disabled.
+# E   ModuleNotFoundError: No module named '_import_local_thrift'
 test:
   imports:
     - thrift
     - thrift.protocol
     - thrift.server
     - thrift.transport
-  requires:
-    - pip
   commands:
     - pip check
+  requires:
+    - pip
 
 about:
   home: https://thrift.apache.org
   license: Apache-2.0
   license_family: APACHE
   license_file: LICENSE
-  license_url: https://github.com/apache/thrift/blob/master/LICENSE
   description: |
     Thrift is a lightweight, language-independent software stack for point-to-point RPC implementation.
     Thrift provides clean abstractions and implementations for data transport, data serialization, and application level processing.
   summary: Python bindings for the Apache Thrift RPC system
   dev_url: https://github.com/apache/thrift
-  doc_url: https://thrift.apache.org/docs/
-  doc_source_url: https://github.com/apache/thrift/tree/v{{ version }}/doc
+  doc_url: https://thrift.apache.org/docs
 
 extra:
   recipe-maintainers:
