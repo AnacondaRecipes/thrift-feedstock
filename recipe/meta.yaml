@@ -6,18 +6,18 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/apache/thrift/archive/refs/tags/v{{ version }}.tar.gz
+  url: https://github.com/apache/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
   sha256: df2931de646a366c2e5962af679018bca2395d586e00ba82d09c0379f14f8e7b
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install ./lib/py --no-deps --no-build-isolation -vv
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ stdlib('c') }}
   host:
     - pip
     - python
