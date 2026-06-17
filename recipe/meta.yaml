@@ -1,13 +1,13 @@
 {% set name = "thrift" %}
-{% set version = "0.22.0" %}
+{% set version = "0.23.0" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/thrift-{{ version }}.tar.gz
-  sha256: 42e8276afbd5f54fe1d364858b6877bc5e5a4a5ed69f6a005b94ca4918fe1466
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 5f43448a92c36ed6a450048355d10e231a1787e4c28965f08fabac0eb978914c
 
 build:
   number: 0
@@ -15,7 +15,7 @@ build:
 
 requirements:
   build:
-    # https://github.com/apache/thrift/blob/v0.22.0/lib/py/setup.py#L84
+    - {{ stdlib('c') }}
     - {{ compiler('cxx') }}
   host:
     - pip
