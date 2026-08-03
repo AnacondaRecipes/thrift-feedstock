@@ -1,5 +1,5 @@
 {% set name = "thrift" %}
-{% set version = "0.23.0" %}
+{% set version = "0.24.0" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 5f43448a92c36ed6a450048355d10e231a1787e4c28965f08fabac0eb978914c
+  sha256: 9ef601c49e988475ff0e741d8e1b45feec23b48514e524341efc274191f1789c
 
 build:
   number: 0
@@ -21,11 +21,13 @@ requirements:
     - pip
     - python
     - wheel
-    - setuptools
+    - setuptools >=61.0
   run:
     - python
   run_constrained:
-    - tornado >=4.0
+    - tornado >=6.3.0
+    - twisted >=24.3.0
+    - zope.interface >=6.1
 
 # Tests disabled.
 # E   ModuleNotFoundError: No module named '_import_local_thrift'
